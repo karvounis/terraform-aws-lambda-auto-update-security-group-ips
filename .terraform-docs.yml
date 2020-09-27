@@ -1,0 +1,16 @@
+formatter: markdown table
+header-from: doc.md
+sections:
+  hide:
+    - providers
+    - requirements
+sort:
+  enabled: true
+  by:
+    - required
+settings:
+  color: true
+  escape: true
+  indent: 2
+  required: true
+  sensitive: true
