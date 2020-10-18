@@ -1,12 +1,12 @@
 locals {
-  zip_file_path = "${path.module}/lambda/archive.zip"
+  zip_file_path = "${path.module}/lambda/lambda-payload.zip"
 }
 
 resource "aws_lambda_function" "this" {
   count = var.enabled ? 1 : 0
 
   filename         = local.zip_file_path
-  function_name    = var.lambda_function_name
+  function_name    = "${var.prefix}${var.lambda_function_name}"
   description      = "Updates the security group rules of an security group based on the public IPs of an AutoScaling Group's EC2 instances"
   handler          = "main"
   runtime          = "go1.x"
@@ -67,10 +67,10 @@ resource "aws_iam_policy_attachment" "aws_lamba_auto_update_ips" {
   policy_arn = aws_iam_policy.aws_lamba_auto_update_ips[0].arn
 }
 
-resource "aws_cloudwatch_log_group" "example" {
+resource "aws_cloudwatch_log_group" "this" {
   count = var.enabled ? 1 : 0
 
-  name              = "/aws/lambda/${var.prefix}lambda-name"
+  name              = "${var.log_group_namespace}${aws_lambda_function.this[0].function_name}"
   retention_in_days = var.log_group_retention_in_days
 
   tags = var.tags

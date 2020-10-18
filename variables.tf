@@ -38,6 +38,12 @@ variable "log_group_retention_in_days" {
   default     = 7
 }
 
+variable "log_group_namespace" {
+  description = "Namespace of the log group"
+  type        = string
+  default     = "/aws/lambda/"
+}
+
 variable "lambda_function_name" {
   description = "A unique name for your Lambda Function"
   type        = string
