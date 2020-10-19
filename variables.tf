@@ -26,10 +26,16 @@ variable "memory_size" {
   default     = 128
 }
 
-variable "timeout" {
-  description = "The amount of time your Lambda Function has to run in seconds. Defaults to 3"
+variable "reserved_concurrent_executions" {
+  description = "The amount of reserved concurrent executions for this lambda function. A value of 0 disables lambda from being triggered and -1 removes any concurrency limitations. Defaults to Unreserved Concurrency Limits -1"
   type        = number
-  default     = 3
+  default     = -1
+}
+
+variable "timeout" {
+  description = "The amount of time your Lambda Function has to run in seconds. Defaults to 10"
+  type        = number
+  default     = 10
 }
 
 variable "log_group_retention_in_days" {

@@ -35,8 +35,9 @@ https://github.com/karvounis/aws-lambda-auto-update-security-group-ips
 | log\_group\_retention\_in\_days | Specifies the number of days you want to retain log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, and 0. If you select 0, the events in the log group are always retained and never expire. | `number` | `7` | no |
 | memory\_size | Amount of memory in MB your Lambda Function can use at runtime. Defaults to 128 | `number` | `128` | no |
 | prefix | Prefix all resources with this string | `string` | `"tf-"` | no |
+| reserved\_concurrent\_executions | The amount of reserved concurrent executions for this lambda function. A value of 0 disables lambda from being triggered and -1 removes any concurrency limitations. Defaults to Unreserved Concurrency Limits -1 | `number` | `-1` | no |
 | tags | The tags to be added to all the resources | `map(string)` | `{}` | no |
-| timeout | The amount of time your Lambda Function has to run in seconds. Defaults to 3 | `number` | `3` | no |
+| timeout | The amount of time your Lambda Function has to run in seconds. Defaults to 10 | `number` | `10` | no |
 | vpc\_security\_group\_ids | List of security group ids | `list(string)` | `null` | no |
 | vpc\_subnet\_ids | List of subnet ids | `list(string)` | `null` | no |
 
