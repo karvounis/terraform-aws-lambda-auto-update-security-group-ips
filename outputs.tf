@@ -71,4 +71,3 @@ output "this_lambda_cloudwatch_event_rule_name" {
   description = "The name of the Cloudwatch Event Rule"
   value       = element(concat(aws_cloudwatch_event_rule.this.*.name, [""]), 0)
 }
-
