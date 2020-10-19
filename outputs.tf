@@ -45,24 +45,30 @@ output "this_lambda_function_source_code_size" {
 }
 
 # IAM Role
-output "lambda_role_arn" {
+output "this_lambda_role_arn" {
   description = "The ARN of the IAM role created for the Lambda Function"
   value       = element(concat(aws_iam_role.this.*.arn, [""]), 0)
 }
 
-output "lambda_role_name" {
+output "this_lambda_role_name" {
   description = "The name of the IAM role created for the Lambda Function"
   value       = element(concat(aws_iam_role.this.*.name, [""]), 0)
 }
 
 # CloudWatch Log Group
-output "lambda_cloudwatch_log_group_arn" {
+output "this_lambda_cloudwatch_log_group_arn" {
   description = "The ARN of the Cloudwatch Log Group"
-  value       = aws_cloudwatch_log_group.this
+  value       = element(concat(aws_cloudwatch_log_group.this.*.arn, [""]), 0)
 }
 
-# Deployment package
-//output "local_filename" {
-//  description = "The filename of zip archive deployed (if deployment was from local)"
-//  value       = local.filename
-//}
+# CloudWatch Event Rule
+output "this_lambda_cloudwatch_event_rule_arn" {
+  description = "The ARN of the Cloudwatch Event Rule"
+  value       = element(concat(aws_cloudwatch_event_rule.this.*.arn, [""]), 0)
+}
+
+output "this_lambda_cloudwatch_event_rule_name" {
+  description = "The name of the Cloudwatch Event Rule"
+  value       = element(concat(aws_cloudwatch_event_rule.this.*.name, [""]), 0)
+}
+

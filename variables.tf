@@ -66,3 +66,19 @@ variable "vpc_security_group_ids" {
   type        = list(string)
   default     = null
 }
+
+variable "autoscaling_group_name" {
+  description = "Autoscaling Group name"
+  type        = string
+}
+
+variable "cloudwatch_event_rule_name" {
+  description = "Name of the cloudwatch event rule"
+  type        = string
+}
+
+variable "lifecycle_hook_heartbeat_timeout" {
+  description = "Heartbeat timeout for the lifecycle hook"
+  type        = number
+  default     = 3600
+}
